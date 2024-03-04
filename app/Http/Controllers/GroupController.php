@@ -20,7 +20,7 @@ class GroupController extends Controller
         $userGroupsIds = $request->user()->groups()->pluck('group_id')->toArray();
         // dd($userGroupsIds);
         return Inertia::render('Group/Index', [
-            'groups' => Group::whenLoaded('users')->get(),
+            'groups' => Group::with('users')->get(),
             'userGroupsIds' => $userGroupsIds,
         ]);
     }
@@ -29,10 +29,10 @@ class GroupController extends Controller
     {
         $userGroupsIds = $request->user()->groups()->pluck('group_id')->toArray();
 
-        $post = Post::whenLoaded(['users', 'likes', 'comments'])
-        ->orderBy('created_at', 'DESC')
-        ->whereIn('user_id', [...$userGroupsIds])
-        ->get();
+        $post = Post::with(['users', 'likes', 'comments'])
+            ->orderBy('created_at', 'DESC')
+            ->whereIn('user_id', [...$userGroupsIds])
+            ->get();
         return Inertia::render('Group/Show', [
             'group' => $group->load('users'),
             'userGroupsIds' => $userGroupsIds,

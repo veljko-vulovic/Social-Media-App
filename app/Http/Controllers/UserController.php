@@ -14,7 +14,7 @@ class UserController extends Controller
     function show(User $user)
     {
         $auth = Auth::user();
-        $post = Post::whenLoaded(['users', 'likes', 'comments'])
+        $post = Post::with(['users', 'likes', 'comments'])
             ->orderBy('created_at', 'DESC')
             ->where('user_id', $user->id)
             ->get();

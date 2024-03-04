@@ -39,6 +39,5 @@ class DatabaseSeeder extends Seeder
             'user_id' => $admin,
             'content' => fake()->paragraph(3),
         ]);
-
     }
 }

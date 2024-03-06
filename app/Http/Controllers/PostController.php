@@ -33,7 +33,7 @@ class PostController extends Controller
         // dd($post);
         $post->save();
 
-        return redirect(route('dashboard'));
+        return redirect()->back()->with('message', 'Post created.');
     }
 
 
@@ -52,6 +52,6 @@ class PostController extends Controller
             Post::destroy($request->id);
         }
 
-        return Redirect::route('dashboard');
+        return redirect()->back()->with('message', 'Post deleted.');
     }
 }

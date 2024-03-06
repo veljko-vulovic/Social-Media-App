@@ -37,7 +37,7 @@ class FollowerController extends Controller
 
         $follower->save();
 
-        // return Redirect::refresh()->withMessage('success', 'User followed successfully.');
+        return redirect()->back()->with('message', 'User followed.');
     }
 
 
@@ -52,6 +52,6 @@ class FollowerController extends Controller
         // dd($follower);
         $follower->delete();
 
-        return Redirect::back()->withMessage('success','User deleted');
+        return redirect()->back()->with('message', 'User unfollowed.');
     }
 }

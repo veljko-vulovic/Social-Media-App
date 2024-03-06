@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    //
-
     public function store(Request $request)
     {
         $comment = new Comment();
@@ -18,11 +16,15 @@ class CommentController extends Controller
         $comment->content = $request->get('comment');
 
         $comment->save();
+
+        return redirect()->back()->with('message', 'Comment created.');
     }
 
     public function destroy(Request $request, Comment $comment)
     {
-        $com○☼ment = Comment::find($request->get('id'));
+        $comment = Comment::find($request->get('id'));
         $comment->delete();
+
+        return redirect()->back()->with('message', 'Comment deleted.');
     }
 }

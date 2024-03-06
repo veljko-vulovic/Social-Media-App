@@ -2,6 +2,7 @@
 
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import ToastList from '@/Components/ToastList.vue';
+import SearchWithList from '@/Components/SearchWithList.vue';
 import { Link } from '@inertiajs/vue3';
 
 </script>
@@ -62,20 +63,7 @@ import { Link } from '@inertiajs/vue3';
 
 
                             <div class="flex items-center justify-end shrink-0 w-sidebar">
-
-                                <div
-                                    class="flex items-center text-white border rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300">
-                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                        class="w-6 h-6 ml-2 mr-1">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                                    </svg>
-
-                                    <input
-                                        class="border-none rounded-md shadow-sm dark:bg-gray-900 dark:text-gray-300 focus:border-none focus:ring-transparent"
-                                        placeholder="Search people..." ref="input" />
-                                </div>
-
+                                <SearchWithList />
                             </div>
                         </div>
 

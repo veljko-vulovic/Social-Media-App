@@ -8,7 +8,9 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -36,6 +38,12 @@ Route::get('/dashboard', HomeController::class)
     // ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::post('/search', function () {
+
+    $user = User::where('name', 'like', '%' . request()->get('search') . '%')->take(5)->get(['id', 'name', 'avatar']);
+    // return request()->get('search');
+    return response()->json($user);
+});
 Route::middleware('auth')->group(function () {
 
     Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');

@@ -24,9 +24,9 @@ const unfollow = (following_id) => {
     })
 }
 
-const follow = (follower_id) => {
+const follow = (following_id) => {
 
-    form.post(route('follower.store', { follower_id }), {
+    form.post(route('follower.store', { following_id }), {
         onSuccess: () => form.reset(),
 
     });
@@ -34,6 +34,7 @@ const follow = (follower_id) => {
 </script>
 
 <template>
+
     <Head title="Group" />
 
     <AuthLayout>

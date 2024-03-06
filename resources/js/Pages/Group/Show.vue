@@ -45,7 +45,7 @@ const leaveGroup = (groupId) => {
                 <div class="flex items-center justify-between w-full my-6">
                     <h2 class="text-2xl">{{ group.name }}</h2>
 
-                    <button v-if="userGroupsIds.includes(group.id.toString())" @click="leaveGroup(group.id)"
+                    <button v-if="userGroupsIds.includes(group.id)" @click="leaveGroup(group.id)"
                         class="px-3 py-2 mt-3 text-white bg-blue-600 rounded-md hover:bg-blue-700"> Leave Group</button>
                     <button v-else @click="joinGroup(group.id)"
                         class="px-3 py-2 mt-3 text-white bg-blue-600 rounded-md hover:bg-blue-700"> Join Group</button>

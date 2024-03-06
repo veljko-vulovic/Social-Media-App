@@ -17,7 +17,7 @@ const joinGroup = (groupId) => {
 
     form.post(route('group.store', { group_id: groupId }), {
         onSuccess: () => {
-            console.log('User added to group');
+            // console.log('User added to group');
         }
     })
 }
@@ -25,13 +25,14 @@ const leaveGroup = (groupId) => {
 
     form.delete(route('group.destroy', { group_id: groupId }), {
         onSuccess: () => {
-            console.log('User left to group');
+            // console.log('User left to group');
         }
     })
 }
 </script>
 
 <template>
+
     <Head title="Group" />
 
     <AuthLayout>
@@ -53,7 +54,7 @@ const leaveGroup = (groupId) => {
                         </div>
                     </div>
 
-                    <button v-if="userGroupsIds.includes(group.id.toString())" @click="leaveGroup(group.id)"
+                    <button v-if="userGroupsIds.includes(group.id)" @click="leaveGroup(group.id)"
                         class="px-3 py-2 mt-3 text-white bg-blue-600 rounded-md hover:bg-blue-700"> Leave Group</button>
                     <button v-else @click="joinGroup(group.id)"
                         class="px-3 py-2 mt-3 text-white bg-blue-600 rounded-md hover:bg-blue-700"> Join Group</button>

@@ -44,7 +44,9 @@ class HandleInertiaRequests extends Middleware
                 // 'user' => new UserResource($user),
                 'user' => $user,
             ],
-
+            'flash' => [
+                'message' => session('message')
+            ],
             'randomUsers' => User::with('following')->inRandomOrder()
                 ->where('id', '!=', Auth::id())
                 ->whereNotIn('id', $followers)

@@ -28,10 +28,11 @@ class GroupController extends Controller
     public function show(Request $request, Group $group)
     {
         $userGroupsIds = $request->user()->groups()->pluck('group_id')->toArray();
+        $groupUsersIds = $group->users->pluck('id')->toArray();
 
         $post = Post::with(['users', 'likes', 'comments'])
             ->orderBy('created_at', 'DESC')
-            ->whereIn('user_id', [...$userGroupsIds])
+            ->whereIn('user_id', [...$groupUsersIds])
             ->get();
         return Inertia::render('Group/Show', [
             'group' => $group->load('users'),
@@ -59,7 +60,8 @@ class GroupController extends Controller
 
         $user->groups()->attach($group);
 
-        return Redirect::route('group.index')->withMessage('success', 'User joined group successfully.');
+        // return Redirect::route('group.index')->with('message', $user->name . ' joined group ' . $group->name . ' successfully.');
+        return  redirect()->back()->with('message', 'User joined ' . $group->name . ' successfully.');
     }
 
     public function destroy(Request $request)
@@ -76,6 +78,7 @@ class GroupController extends Controller
 
         $user->groups()->detach($group);
 
-        return Redirect::route('group.index')->withMessage('success', 'User left group.');
+        // return Redirect::route('group.index')->with('message', $user->name . ' left group ' . $group->name);
+        return redirect()->back()->with('message', 'User left ' . $group->name . ' group.');
     }
 }

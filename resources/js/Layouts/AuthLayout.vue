@@ -1,11 +1,15 @@
 <script setup>
 
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import ToastList from '@/Components/ToastList.vue';
 import { Link } from '@inertiajs/vue3';
 
 </script>
 
 <template>
+
+    <ToastList />
+
     <div>
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             <nav class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700">
@@ -16,7 +20,8 @@ import { Link } from '@inertiajs/vue3';
                             <!-- Logo -->
                             <div class="flex items-center shrink-0 w-sidebar">
                                 <Link :href="route('dashboard')">
-                                <ApplicationLogo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
+                                <ApplicationLogo
+                                    class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                                 </Link>
                             </div>
 

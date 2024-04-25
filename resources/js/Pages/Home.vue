@@ -26,6 +26,7 @@ const user = usePage().props.auth.user;
 
 
 <template>
+
     <Head title="Home" />
 
     <AuthLayout>
@@ -77,10 +78,10 @@ const user = usePage().props.auth.user;
                 </div>
 
                 <SidebarList>
-                    <SidebarListItem>
+                    <div class="flex items-center space-x-1">
                         <HiUserGroup class="text-2xl" />
                         <div>My Groups</div>
-                    </SidebarListItem>
+                    </div>
 
                     <SidebarListItem :href="route('group.show', group.id)" class="ml-3" v-for="group in userGroups">
                         <HiUserGroup class="text-2xl" />
@@ -91,23 +92,23 @@ const user = usePage().props.auth.user;
                 </SidebarList>
 
                 <SidebarList>
-                    <SidebarListItem :href="route('dashboard')">
+                    <SidebarListItem :href="route('user.posts', user.id)">
                         <HiPencilSquare class="text-2xl" />
                         <span>Posts</span>
                     </SidebarListItem>
-                    <SidebarListItem :href="route('dashboard')">
+                    <SidebarListItem :href="route('user.likes', user.id)">
                         <AnOutlinedLike class="text-2xl" />
                         <span>Likes</span>
                     </SidebarListItem>
-                    <SidebarListItem :href="route('dashboard')">
+                    <SidebarListItem :href="route('user.comments', user.id)">
                         <BxCommentAdd class="text-2xl" />
                         <span>Comments</span>
                     </SidebarListItem>
 
-                    <SidebarListItem :href="route('dashboard')">
+                    <!-- <SidebarListItem :href="route('dashboard')">
                         <BsBookmarkPlus class="text-2xl" />
                         <span>Bookmarks</span>
-                    </SidebarListItem>
+                    </SidebarListItem> -->
                     <SidebarListItem :href="route('group.index')">
                         <HiUserGroup class="text-2xl" />
                         <span>Groups</span>

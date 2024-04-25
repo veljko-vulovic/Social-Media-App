@@ -27,4 +27,33 @@ class UserController extends Controller
             'isFollowed' => $isFollowed
         ]);
     }
+
+    function posts(User $user)
+    {
+        $posts =  $user->posts;
+        return Inertia::render('User/Posts', [
+            'posts' => new PostsCollection($posts),
+        ]);
+    }
+
+    function comments(User $user)
+    {
+        $comments =  $user->comments->pluck('post_id')->toArray();
+        $comments =  array_unique($comments);
+        $posts = Post::where('id', $comments)->get();
+        return Inertia::render('User/Posts', [
+            'posts' => new PostsCollection($posts),
+        ]);
+    }
+
+    function likes(User $user)
+    {
+        $likes =  $user->liked->pluck('post_id')->toArray();
+        dd($likes);
+        $likes =  array_unique($likes);
+        $posts = Post::where('id', $likes)->get();
+        return Inertia::render('User/Posts', [
+            'posts' => new PostsCollection($posts),
+        ]);
+    }
 }

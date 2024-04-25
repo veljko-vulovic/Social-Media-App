@@ -47,6 +47,10 @@ Route::post('/search', function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/user/{user}/posts', [UserController::class, 'posts'])->name('user.posts');
+    Route::get('/user/{user}/comments', [UserController::class, 'comments'])->name('user.comments');
+    Route::get('/user/{user}/likes', [UserController::class, 'likes'])->name('user.likes');
+
 
     Route::post('/post', [PostController::class, 'store'])->name('post.store');
     Route::delete('/post', [PostController::class, 'destroy'])->name('post.destroy');

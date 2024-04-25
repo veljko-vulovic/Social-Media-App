@@ -49,7 +49,6 @@ class UserController extends Controller
     function likes(User $user)
     {
         $likes =  $user->liked->pluck('post_id')->toArray();
-        dd($likes);
         $likes =  array_unique($likes);
         $posts = Post::where('id', $likes)->get();
         return Inertia::render('User/Posts', [
